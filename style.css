@@ -1,0 +1,10 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#attachment{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: brown;
+}
