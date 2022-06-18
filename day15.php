@@ -40,12 +40,16 @@
     
             //move_uploaded_file(string $from, string $to):
             // $new_path = "uploads/" . basename($_FILES["attachment"]["name"]);
+            
 
             $file_name = null;
-            if (!empty($_FILES['attachment']['name'])) {
-
-                // If this request falls under any of them, treat it invalid.
-                if (
+            if (empty($_FILES['attachment']['name'])) {
+                $errors['file'] = "Please give valid file .";
+               // move_uploaded_file($_FILES['attachment']['tmp_name'], "uploads/" . basename($_FILES["attachment"]["name"]));
+            } else{
+                
+                 // If this request falls under any of them, treat it invalid.
+                 if (
                     !isset($_FILES['attachment']['error']) ||
                     is_array($_FILES['attachment']['error'])
                 ) {
@@ -89,11 +93,8 @@
                     $errors['attachment'] = "File uploads fail, please try again.";
                     // throw new Exception($errors['attachment']);
                 }
-
-
-
-               // move_uploaded_file($_FILES['attachment']['tmp_name'], "uploads/" . basename($_FILES["attachment"]["name"]));
             }
+            
         }
     } catch (Exception $e) {
         $errors['global']= $e->getMessage();
